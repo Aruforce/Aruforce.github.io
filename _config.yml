@@ -1,26 +1,24 @@
 permalink: /:year/:month/:day/:title.html
 paginate: 10
+# this should be update to Maruku asap
 markdown: redcarpet
 
 # 作者信息
 author: 
-  name: Anya Lin
-  email: lay.1010@hotmail.com
-  link: http://painterlin.com
-  weibo: http://weibo.com/orangeissweet
-  github: http://github.com/lay1010
-  music: http://site.douban.com/linanya
-  linkedin: https://www.linkedin.com/pub/anya-lin/81/91/232
-
+  name: Aruforce
+  email: Aruforce@163.com
+  link: https://www.aruforce.site
+  github: http://github.com/Aruforce
+  
 # 站点信息
-title: 林安亚的博客
-description: My personal blog
-url: http://painterlin.com
+title: Arufroce的NoteBook
+description: Aruforce的笔记本
+url: https://www.aruforce.site
 rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: /public/img/deer3.png
-favicon: /public/img/deer3.png
+gavatar: /public/img/avantar.jpg
+favicon: /public/img/avantar.jpg
 
 # google analytics 设置
 ga:
