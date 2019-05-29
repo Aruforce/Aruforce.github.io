@@ -7,18 +7,7 @@ markdown: redcarpet
 author: 
   name: Aruforce
   email: Aruforce@163.com
-  gemail: xm952060690@gmail.com
-  link: https://www.aruforce.site
-  github: https://github.com/Aruforce
-originaAuthor: 
-  name: Anya Lin
-  email: lay.1010@hotmail.com
-  link: http://painterlin.com
-  weibo: http://weibo.com/orangeissweet
-  github: http://github.com/lay1010
-  music: http://site.douban.com/linanya
-  linkedin: https://www.linkedin.com/pub/anya-lin/81/91/232
-  
+  github: https://github.com/Aruforce  
 # 站点信息
 title: Arufroce的NoteBook
 description: Aruforce的笔记本
@@ -28,11 +17,6 @@ rss_url: /pages/atom.xml
 # gavatar头像及Favicon
 gavatar: /public/img/avantar.jpg
 favicon: /public/img/avantar.jpg
-
-# google analytics 设置
-ga:
-  id: UA-54262064-1 
-  url: www.aruforce.site
 
 # disqus 设置
 disqus:
