@@ -8,6 +8,9 @@
 		<!-- 是导航栏-->
         {% for category in site.categories %}
          <li><a href="#{{ category | first }}" data-toggle="tab">{{ category[0] }}</a></li>
+		 <script>
+			console.log(category)
+		 </script>
         {% endfor %}
       </ul>
     </div>
