@@ -1,7 +1,6 @@
 ---
 layout: post
-title: <i class="fa fa-user fa-lg"></i>
-titlename: 关于
+title: 关于作者
 category: About
 tags: About
 keywords: 站点及作者一些相关信息
