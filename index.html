@@ -35,7 +35,7 @@ titlename: 首页
       {% endfor %}
     </div>
   </div>
-  {% for cate in site.cates %}
+   {% for cate in site.cates %}
     <div class="col-md-12">
       <div class="panel panel-primary">
         <div class="panel-heading">{{ cate }}</div>
@@ -44,7 +44,7 @@ titlename: 首页
             {% for post in tag[1] %}
               <a  href='{{ post.url }}' class="list-group-item pjaxlink clearfix">
                 {{post.title}}
-                <span class="badge">{{ post.date | date:"%Y年%m月%d日" }}</span>
+                <span class="badge">{{ post.date | date:"%Y年%m月%d日" }}</span><!--if true then output-->
               </a>
             {% endfor %}
           {% endif %}
