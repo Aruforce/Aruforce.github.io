@@ -6,22 +6,22 @@ tags: Maven
 keywords: Maven 使用 运作逻辑 概念 配置 
 description: 
 ---
-# 1.Maven的应用场景
+## 1.Maven的应用场景
 Maven是一个Java平台下项目管理及自动构建工具,抽象出了Java平台下的软件工程构建的标准生命周期，并提供了提供了各个生命周期下的自动化工具。
-# 2.Maven的核心概念
-## 2.1 构建的生命周期（标准顺序流程）
+## 2.Maven的核心概念
+### 2.1 构建的生命周期（标准顺序流程）
 Maven对生命周期的抽象是流程顺序化的，也就是说你要进行到某个周期的某个阶段，那么这个阶段之前的全部阶段都会被执行.
-### 2.1.1 clean
+#### 2.1.1 clean
 清理周期的目的在于去除掉上次构建生成的资源，比如的.class等等，保证构建最后使用的输出资源是当前工作空间内的处理输出资源；包含的主要流程：clean
-### 2.2.2 default
+#### 2.2.2 default
 默认周期包含了的主要流程：校验（validate)，编译(compile)，测试(test)，打包(package)，验证（verify），安装到本地仓库（install），发布到远程仓库（deploy）。
-### 2.2.3 site
+#### 2.2.3 site
 也叫站点生成周期，主要包括两个流程：第一生成工程的文档，第二部署到服务器上去；
-## 2.2 插件
+### 2.2 插件
 Maven规定了构建周期的阶段执行顺序及某个阶段应该干什么的标准，也就是完成了对构建流程的抽象并制定了流程的顺序标准，那么这些标准的实现者是谁呢？插件（plugin），插件具体的完成每个流程每个阶段的具体的工作。
-### 2.2.1 目标（goal）
+#### 2.2.1 目标（goal）
 一个插件可以有多种功能，每种功能称之为一个目标（goal）；比如compile插件可以支持编译功能代码（goal-compile）和 编译测试代码（goal-testCompile）;
-### 2.2.2 功能与生命周期的绑定
+#### 2.2.2 功能与生命周期的绑定
 比如下面的编译插件提供了compile和testCompile两个功能，并分别绑定到了default声明周期的<phase>compile</phase>以及<phase>test-compile</phase>；
 
 这就是告诉Maven工具在执行到<phase>compile</phase>和<phase>test-compile</phase>阶段时，要去调用maven-compiler-plugin的compile或者testCompile功能。
@@ -62,16 +62,16 @@ Maven规定了构建周期的阶段执行顺序及某个阶段应该干什么的
 	</configuration>
 </plugin>
 ```
-### 2.2.3 mvn命令的基本格式
-#### 2.2.3.1 指定声明周期形式
+#### 2.2.3 mvn命令的基本格式
+##### 2.2.3.1 指定声明周期形式
 `mvn test`:意思是告诉mvn执行到<phasese>test</phasese>，那么在之前的所有阶段及每个阶段绑定的每一个goal都会被执行；
-#### 2.2.3.2 具体执行插件的功能：
+##### 2.2.3.2 具体执行插件的功能：
 `mvn compiler:compile`:意思是告诉mvn 值执行这个compiler插件的compile功能，注意这样只会执行这个插件的这个功能，其他插件的功能不不会执行；
 这里补充一些插件名解析的规则，对于一个插件的名字K，maven会把这个插件名解析成maven-K-plugin（maven自己提供的默认插件）及K-maven-plugin（第三方自定义插件）,并从当前工程有效pom.xml的去寻找artifactId（请参看下面的Jar的坐标）为maven-K-plugin或者K-maven-plugin的插件，K就是插件的别名，
-### 2.2.4 生命周期类型
+#### 2.2.4 生命周期类型
 Maven为不同的类型的工程的每个阶段提供了默认的插件来实现**约定**的功能。
 （工程的类型由pom文件的<packaging></packaging> 指定，一般为jar、war、pom==多 module的情况下）
-## 2.3 Jar的坐标
+### 2.3 Jar的坐标
 基本上在每一个工程中都不可避免的会加入多个jar作为lib，而这些lib的中jar的版本兼容性是一个令人相当头痛的问题：A.jar依赖C.jar,B.jar也依赖C.jar,但是依赖的分别是C的不同版本。
 
 一个两个还好可以上三者官网上看一下解决下冲突，如果很多这样的情况，是不是很想死？甚至如果你不是很熟悉每个Jar的话，有冲突你甚至都发现不了。
@@ -79,14 +79,14 @@ Maven为不同的类型的工程的每个阶段提供了默认的插件来实现
 最好出现一个约定Jar版本管理系统，自动的解决或者提示冲突在哪里。Maven提供这样一个系统（包含一个内置的中央仓库和Jar的坐标系）来解决这个问题：
 
 每个Jar必须声明自己的x（groupId:组织Id）y（artifactId:工程Id）z(version:工程版本)三个坐标，使用的依赖也必须明确的声明其xyz坐标，这样Maven就可以汇总查看整个系统具体使用哪个Jar的哪个版本，如果出现了同Jar不同版本（同XY不同Z）的情况就报告冲突。
-### 2.3.1 冲突的解决机制
+#### 2.3.1 冲突的解决机制
 这个以后再补充,我一般在冲突的dependency里面直接exclusion掉，然后重新指定一个较高级的版本。
-## 2.4 仓库
-### 2.4.1 远程仓库
+### 2.4 仓库
+#### 2.4.1 远程仓库
 也就是保存全部的Jar的服务器，maven自己提供了一个中央仓库，但一般企业开发中都会自己搭建nexus私服。
-### 2.4.2 本地仓库
+#### 2.4.2 本地仓库
 也就是下面setting.xml里面指定的本地路径。
-# 3.Setting的解释及解析
+## 3.Setting的解释及解析
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -187,7 +187,7 @@ Maven为不同的类型的工程的每个阶段提供了默认的插件来实现
   </activeProfiles>
 </settings>
 ```
-# 4.pom.xml的一些基本的解释
+## 4.pom.xml的一些基本的解释
 ```xml
 <?xml version="1.0" encoding="GBK"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -342,13 +342,13 @@ Maven为不同的类型的工程的每个阶段提供了默认的插件来实现
 </project>
 
 ```
-# 5. 总结
+## 5. 总结
 
 1. 使用是够了,但是高级点的需要自己写插件的部分还没遇到；
 2. 插件的配置相关内容不太应该写在这里而且也说明怎么去查找依赖的版本版本冲突排解方法也够简单粗暴。
 3. 至于使用说明，读完也基本上有感觉，自己试着摆弄几个类型的工程吧 jar->war->多module;基本上也就这个学习使用流程吧
 4. 剩下的私服搭建 一般就是nexus了,这个后期补充;
 
-# 6. 感受
+## 6. 感受
 1. 开始学习使用maven的时候弄不清楚概念确实很难摸清楚怎么使用;
 2. 学完后发现maven这些也是解决特定问题,知道Maven要解决什么问题,知道运作逻辑之后也就简单了
