@@ -9,7 +9,6 @@
         {% for category in site.categories %}
          <li><a href="#{{ category | first }}" data-toggle="tab">{{ category[0] }}</a></li>
         {% endfor %}
-        <li><a class="pjaxlink" href="/pages/about.html">{{ site.locals.about }}</a></li>  
       </ul>
     </div>
 	{% if %}
