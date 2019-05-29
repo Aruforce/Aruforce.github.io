@@ -29,7 +29,7 @@ titlename: 首页
       <div class="panel-heading">{{ site.locals.newest }}</div>
       {% for post in paginator.posts %}
 		<!--过滤掉关于相关内容-->
-		{% if post.category != "About" %}
+		{% if post.category != "关于" %}
 		   <a  href='{{ post.url }}' class="list-group-item pjaxlink clearfix">
 			 {{post.title}}
 			 <span class="badge">{{ post.date | date:"%Y年%m月%d日" }}</span>
