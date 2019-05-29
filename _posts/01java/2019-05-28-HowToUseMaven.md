@@ -191,22 +191,21 @@ Maven为不同的类型的工程的每个阶段提供了默认的插件来实现
   </properties>
   <!--jar deploy的远程仓库位置-->
   <distributionManagement>
-        <repository>
-            <id>nexus-private-repo</id>
-            <name>Fruit Releases</name>
-            <url>http://127.0.0.1:8090/repository/maven-releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-private-repo</id>
-            <name>Fruit Snapshots</name>
-            <url>http://127.0.0.1:8090/repository/maven-snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+     <repository><!--RELEASE包发布地址-->
+        <id>nexus-private-repo</id>
+        <name>Fruit Releases</name>
+        <url>http://127.0.0.1:8090/repository/maven-releases</url>
+     </repository>
+     <snapshotRepository><!--snapshot包发布地址-->
+        <id>nexus-private-repo</id>
+        <name>Fruit Snapshots</name>
+        <url>http://127.0.0.1:8090/repository/maven-snapshots</url>
+     </snapshotRepository>
+  </distributionManagement>
   <!--共用的依赖管理,如果在下面的以来配置中修改其中的配置的话(主要是版本),就是管理中指定的版本-->
   <dependencyManagement>
     <dependencies>
-	  <!--junit 插件-->
-      <dependency>
+	<dependency><!--junit 插件-->
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.12</version>
@@ -318,7 +317,6 @@ Maven为不同的类型的工程的每个阶段提供了默认的插件来实现
     </profile>
   </profiles>
 </project>
-
 ```
 ## 5. 总结
 
