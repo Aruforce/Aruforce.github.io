@@ -1,5 +1,5 @@
 ---
-layout: page_title
+layout: post
 title: <i class="fa fa-user fa-lg"></i>
 titlename: 关于
 category: About
