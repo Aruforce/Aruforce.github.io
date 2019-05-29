@@ -7,7 +7,7 @@
       <ul class="nav nav-pills nav-stacked">
 		<!-- 是导航栏-->
         {% for category in site.categories %}
-         <li><a href="#{{ category | first }}" data-toggle="tab">{{ category[0] }}</a></li>
+         <li><a href="#{{ category }}" data-toggle="tab">{{ category[0] }}</a></li>
         {% endfor %}
       </ul>
     </div>
