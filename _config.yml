@@ -12,7 +12,6 @@ author:
 title: Arufroce的NoteBook
 description: Aruforce的笔记本
 url: https://www.aruforce.site
-rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
 gavatar: /public/img/avantar.jpg
@@ -23,8 +22,9 @@ disqus:
   shortname: Aruforce
 
 # 主题设置，自动激活某个标签
-active: java
-
+active: 
+   java
+   
 # 首页除了最新文章外显示分类
 cates: 
   - JavaSE
@@ -34,7 +34,7 @@ cates:
   - Game
   - Think
 
-# 中文本地化
+# 中文本地化--- ignore it ,not need
 locals:
   tags: 标签
   about: 关于
