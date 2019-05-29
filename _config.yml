@@ -1,5 +1,5 @@
 permalink: /:year/:month/:day/:title.html
-paginate: 10
+paginate: 5
 # this should be update to Maruku asap
 markdown: redcarpet
 
@@ -32,6 +32,7 @@ cates:
   - Spring
   - Game
   - Think
+  - Golang
 
 # 中文本地化--- ignore it ,not need
 locals:
