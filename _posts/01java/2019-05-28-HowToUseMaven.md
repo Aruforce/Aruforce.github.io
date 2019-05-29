@@ -213,14 +213,14 @@ Maven为不同的类型的工程的每个阶段提供了默认的插件来实现
         <version>4.12</version>  
         <scope>test</scope>  
         <!--
-		 插件的有效级别：System，provide，test，compile，runtime等等，涉及到插件的依赖传递，默认值是compile
-		 compile:编译范围依赖在所有的classpath中可用，同时它们也会被打包。
-		 provided:provided 依赖只有在当JDK 或者一个容器已提供该依赖之后才使用.已提供范围的依赖在编译classpath（不是运行时）可用。它们不是传递性的，也不会被打包。
-		 runtime：runtime 依赖在运行和测试系统的时候需要，但在编译的时候不需要。比如，你可能在编译的时候只需要JDBC API JAR，而只有在运行的时候才需要JDBC驱动实现。
-		 test:test范围依赖 在一般的编译和运行时都不需要，它们只有在测试编译和测试运行阶段可用。
-		 system:system范围依赖与provided 类似，但是你必须显式的提供一个对于本地系统中JAR 文件的路径。不要使用它。
-		 optional：可选的,classpath有没有都行。
-		 --> 
+		插件的有效级别：System，provide，test，compile，runtime等等，涉及到插件的依赖传递，默认值是compile
+		compile:编译范围依赖在所有的classpath中可用，同时它们也会被打包;
+		provided:provided 依赖只有在当JDK 或者一个容器已提供该依赖之后才使用.已提供范围的依赖在编译classpath（不是运行时）可用。它们不是传递性的，也不会被打包。
+		runtime：runtime 依赖在运行和测试系统的时候需要，但在编译的时候不需要。比如，你可能在编译的时候只需要JDBC API JAR，而只有在运行的时候才需要JDBC驱动实现。
+		test:test范围依赖 在一般的编译和运行时都不需要，它们只有在测试编译和测试运行阶段可用。
+		system:system范围依赖与provided 类似，但是你必须显式的提供一个对于本地系统中JAR 文件的路径。不要使用它。
+		optional：可选的,classpath有没有都行。
+		--> 
       </dependency>  
       <dependency> 
         <groupId>com.aruforce</groupId>  
