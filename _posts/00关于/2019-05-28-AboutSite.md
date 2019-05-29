@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 关于站点
-category: About
+category: 关于
 tags: About
 keywords: 站点及作者一些相关信息
 description: 
