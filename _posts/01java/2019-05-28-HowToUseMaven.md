@@ -89,35 +89,23 @@ Maven为不同的类型的工程的每个阶段提供了默认的插件来实现
 ## 3.Setting的解释及解析
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-  <!--指定你本地仓库的位置-->
- <localRepository>E:\JarLib</localRepository>
-  <!-- 
-  是否启用交互模式:默认true;交互模式是指当maven需要你的输入时会读取你在console的输入的数据
-  <interactiveMode>true</interactiveMode>
-  -->
-
-  <!-- offline
-   是否在离线模式运行？默认false
-  <offline>false</offline>
-  -->
-
-  <!-- 
-   插件组的Id：plugin 的groupId
-   内置了 "org.apache.maven.plugins" and "org.codehaus.mojo" ,不需要使用自定插件的人员无需修改
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+   <!--指定你本地仓库的位置-->
+   <localRepository>E:\JarLib</localRepository>
+   <!--是否启用交互模式:默认true;交互模式是指当maven需要你的输入时会读取你在console的输入的数据-->
+   <!--
+   <interactiveMode>true</interactiveMode>
    -->
-  <pluginGroups>
+   <!-- offline是否在离线模式运行？默认false-->
+   <offline>false</offline>
+   <!--插件组的Id：plugin 的groupId,内置了 "org.apache.maven.plugins" and "org.codehaus.mojo" ,不需要使用自定插件的人员无需修改-->
+   <pluginGroups>
     <!-- 
     <pluginGroup>com.your.plugins</pluginGroup>
     -->
-  </pluginGroups>
-
-  <!-- 
-    网络代理：默认使用第一个，实际上基本不需要；比如你要去某个特定的仓库下载Jar而这个仓库又不在公网需要通过代理去下载，这里配置代理的安全密码验证的东西
-   -->
-  <proxies>
+   </pluginGroups>
+   <!-- 网络代理：默认使用第一个，实际上基本不需要；比如你要去某个特定的仓库下载Jar而这个仓库又不在公网需要通过代理去下载，这里配置代理的安全密码验证的东西-->
+   <proxies>
     <!--  
     <proxy>
       <id>optional</id>
@@ -130,24 +118,19 @@ Maven为不同的类型的工程的每个阶段提供了默认的插件来实现
       <nonProxyHosts>local.net|some.host.com</nonProxyHosts>
     </proxy>
     -->
-  </proxies>
-
-  <!--
-	访问某些服务的票据账户密码或者sshkey等，注意这些Id应该和仓库的Id一样,实际上Maven也只会访问这些服务器
-   -->
-  <servers>
-	<server>
-      <id>nexus-private-repo</id>
-      <username>admin</username>
-      <password>adminpass</password>
-    </server>
-  </servers>
-
-  <!-- 
-  远程仓库的镜像,如果从某个仓库下载Jar下不下来的时候，比如网络太垃圾，如果存在这个仓库的镜像maven则会转到这个镜像来下载。
-   -->
-  <mirrors>
-    <!--  注意mirrodId 必须unique
+   </proxies>
+   <!--访问某些服务器的凭据账户密码或者sshkey等，注意这些Id应该和仓库的Id一样,实际上Maven也只会访问这些服务器-->
+   <servers>
+      <server>
+         <id>nexus-private-repo</id>
+         <username>admin</username>
+         <password>adminpass</password>
+      </server>
+   </servers>
+   <!--远程仓库的镜像,如果从某个仓库下载Jar下不下来的时候，比如网络太垃圾，如果存在这个仓库的镜像maven则会转到这个镜像来下载。-->
+   <mirrors>
+    <!--注意mirrodId 必须unique-->
+	<!--
     <mirror>
       <id>mirrorId</id>
       <mirrorOf>repositoryId</mirrorOf>
@@ -155,36 +138,31 @@ Maven为不同的类型的工程的每个阶段提供了默认的插件来实现
       <url>http://my.repository.com/repo/path</url>
     </mirror>
 	-->
-  </mirrors>
-  <!-- 
-	配置项组,在满足某些条件时激活,配置组中定义的配置会增加到Pom.xml中,这些配置项会被Pom中定义的各个插件使用。一般的都会配置各个工程通用的项目配置及保密的配置等等
-  -->
-  <profiles>
-   <profile>
-		<id>nexus-private-repo</id>
-		<repositories>
-			<!--比如这个仓库的位置-->
-			<repository>
-				<id>nexus-private-repo</id>
-				<name>nexus-private-repo</name>
-				<url>http://127.0.0.1:8090/repository/maven-snapshots</url>
-				<releases>
-					<enabled>false</enabled>
-				</releases>
-				<snapshots>
-					<enabled>true</enabled>
-				</snapshots>
-			</repository>
-		</repositories>
-    </profile>
-  </profiles>
-
-  <!--
-  激活的profile,会被所有的工程继承使用，
-  -->
-  <activeProfiles>
-	<activeProfile>nexus-private-repo</activeProfile>
-  </activeProfiles>
+   </mirrors>
+   <!-- 配置项组,在满足某些条件时激活,配置组中定义的配置会增加到Pom.xml中,这些配置项会被Pom中定义的各个插件使用。一般的都会配置各个工程通用的项目配置及保密的配置等等-->
+   <profiles>
+      <profile>
+         <id>nexus-private-repo</id>
+         <repositories>
+            <!--比如这个仓库的位置-->
+            <repository>
+               <id>nexus-private-repo</id>
+               <name>nexus-private-repo</name>
+               <url>http://127.0.0.1:8090/repository/maven-snapshots</url>
+               <releases>
+                  <enabled>false</enabled>
+               </releases>
+               <snapshots>
+                  <enabled>true</enabled>
+               </snapshots>
+            </repository>
+         </repositories>
+      </profile>
+   </profiles>
+   <!-- 激活的profile,会被所有的工程继承使用-->
+   <activeProfiles>
+      <activeProfile>nexus-private-repo</activeProfile>
+   </activeProfiles>
 </settings>
 ```
 ## 4.pom.xml的一些基本的解释
