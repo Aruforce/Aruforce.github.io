@@ -9,6 +9,7 @@ description:
 ## 1. MemoryMap
 1. 这和常用的数据结构Map没有什么关系;
 2. 这是内存使用分配的规范,操作系统需要处理
+
 ## 2. 分配表(First 1Mb Memory 分配规范)
 <table border="2" cellpadding="4" cellspacing="0" style="margin-top:1em; margin-bottom:1em; background:#f9f9f9; border:1px #aaa solid; border-collapse:collapse; {{{1}}}">
    <tbody>
